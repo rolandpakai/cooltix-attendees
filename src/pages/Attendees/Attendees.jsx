@@ -106,13 +106,14 @@ export default function Attendees() {
       
       <SearchContainer
         form={form}
+        fieldName={"keyword"}
         placeholder={"Search attendees"}
         buttonLabel={"Search"}
         loading={loading}
         error={errorForm || error?.message}
         updateField={updateField} 
         onSearch={handleSearchButtonOnClick}
-        extraFields={[
+        optionalFields={[
           <DateRange 
             from={{ name: "from", value: form.from, label: "Attendees from", placeholder: "Choose a date" }}
             until={{ name: "until", value: form.until, label: "Attendees until", placeholder: "Choose a date" }}

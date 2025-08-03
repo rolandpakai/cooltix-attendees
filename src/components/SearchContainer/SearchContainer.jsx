@@ -3,21 +3,21 @@ import { StyledSearchContainer, Stack, ErrorMessage } from './SearchContainer.st
 import SearchInput from '../SearchInput/SearchInput';
 import Button from '../Button/Button';
 
-export default function SearchContainer({ form, placeholder, buttonLabel, error, loading, updateField, onSearch, extraFields }) {
+export default function SearchContainer({ form, fieldName, placeholder, buttonLabel, error, loading, updateField, onSearch, optionalFields }) {
   return (
     <StyledSearchContainer>
       <Stack>
         <SearchInput 
-          name={"keyword"}
+          name={fieldName}
           placeholder={placeholder}
-          value={form.keyword}
-          onChange={value => updateField('keyword', value)}
+          value={form[fieldName]}
+          onChange={value => updateField(fieldName, value)}
           validation={{ required: false, minLength: 3 }}
           disabled={loading}
         />
         <Button variant={"primary"} size={"small"} onClick={onSearch}>{buttonLabel}</Button>
       </Stack>
-      {extraFields && extraFields.map((field, index) => (
+      {optionalFields && optionalFields.map((field, index) => (
         <React.Fragment key={index}>{field}</React.Fragment>
       ))}
       {error && <ErrorMessage>{error}</ErrorMessage>}
