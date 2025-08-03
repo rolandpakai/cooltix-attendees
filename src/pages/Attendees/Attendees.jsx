@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useQuery } from '@apollo/client';
 import PageHeader from '../../components/PageHeader/PageHeader';
-import { AttendeesPageContainer, ErrorMessage, SearchContainer, Stack } from './Attendees.styles';
+import { AttendeesPageContainer } from './Attendees.styles';
+import SearchContainer from '../../components/SearchContainer/SearchContainer';
 import DateRange from '../../components/DateRange/DateRange'; 
-import SearchInput from '../../components/SearchInput/SearchInput';
-import Button from '../../components/Button/Button';
 import ResultList from '../../components/ResultList/ResultList';
 import AttendeesResultRow from './AttendeesResultRow';
 import { useForm } from '../../hooks/useForm';
@@ -56,10 +55,10 @@ export default function Attendees() {
   }, [data]);
   
   const handleSearchButtonOnClick = () => {
-    const error = validateDateInterval(form.from, form.until);
+    const dateError  = validateDateInterval(form.from, form.until);
     
-    if (error) {
-      setErrorForm(error);
+    if (dateError ) {
+      setErrorForm(dateError);
       return;
     } 
     
@@ -105,27 +104,23 @@ export default function Attendees() {
     <AttendeesPageContainer>
       <PageHeader title={"Attendees"} showExportButton={true}/>
       
-      <SearchContainer>
-        <Stack>
-          <SearchInput 
-            name={"keyword"}
-            placeholder={"Search for attendees..."}
-            value={form.keyword}
-            onChange={value => updateField('keyword', value)}
-            validation={{ required: false, minLength: 3 }}
-            disabled={loading}
+      <SearchContainer
+        form={form}
+        placeholder={"Search attendees"}
+        buttonLabel={"Search"}
+        loading={loading}
+        error={errorForm || error?.message}
+        updateField={updateField} 
+        onSearch={handleSearchButtonOnClick}
+        extraFields={[
+          <DateRange 
+            from={{ name: "from", value: form.from, label: "Attendees from", placeholder: "Choose a date" }}
+            until={{ name: "until", value: form.until, label: "Attendees until", placeholder: "Choose a date" }}
+            loading={loading}
+            onChange={updateField}
           />
-          <Button variant={"primary"} size={"small"} onClick={handleSearchButtonOnClick}>Search</Button>
-        </Stack>
-        <DateRange 
-          from={{ name: "from", value: form.from, label: "Attendees from", placeholder: "Choose a date" }}
-          until={{ name: "until", value: form.until, label: "Attendees until", placeholder: "Choose a date" }}
-          loading={loading}
-          onChange={updateField}
-        />
-        {errorForm && <ErrorMessage>{errorForm}</ErrorMessage>}
-        {error && <ErrorMessage>{error.message}</ErrorMessage>}
-      </SearchContainer>
+        ]}
+      />
 
       <ResultList 
         result={result}
