@@ -4,7 +4,6 @@ import SearchInput from '../SearchInput/SearchInput';
 import Button from '../Button/Button';
 
 export default function SearchContainer({ form, placeholder, buttonLabel, error, loading, updateField, onSearch, extraFields }) {
-  console.log("loading in SearchContainer:", loading);
   return (
     <StyledSearchContainer>
       <Stack>
