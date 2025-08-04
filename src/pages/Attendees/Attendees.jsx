@@ -7,7 +7,7 @@ import SearchContainer from '../../components/SearchContainer/SearchContainer';
 import DateRange from '../../components/DateRange/DateRange'; 
 import ResultList from '../../components/ResultList/ResultList';
 import AttendeesResultRow from './AttendeesResultRow';
-import { useForm } from '../../hooks/useForm';
+import { useFormContext } from '../../hooks/useFormContext';
 import { buildSearchQuery, validateDateInterval, getDate } from '../../utils';
 import { GET_EVENT_ATTENDEES_CONNECTION } from '../../api/graphql/queries/event';
 import mockResult from '../../mocks/event.attendeesConnection.json';
@@ -35,7 +35,7 @@ export default function Attendees() {
     searchQuery: JSON.stringify({}),
   }
   
-  const { form, updateField } = useForm({ keyword: '', from: '', until: '' });
+  const { form, updateField } = useFormContext();
   const [ errorForm, setErrorForm ] = useState('');
   
   const [result, setResult] = useState([]);

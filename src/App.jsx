@@ -3,6 +3,8 @@ import { GlobalStyle } from './Global.styles';
 import Layout from './Layout';
 import Home from './pages/Home/Home';
 import Attendees from './pages/Attendees/Attendees';
+import attendeesInitialState from './pages/Attendees/initialState';
+import { FormProvider } from './contexts/Form/FormProvider';
 
 export default function App() {
   return (
@@ -11,7 +13,7 @@ export default function App() {
       <Router>
         <Routes>
           <Route element={<Layout />}>
-            <Route path="/event/:eventId/attendees" element={<Attendees />} />
+            <Route path="/event/:eventId/attendees" element={<FormProvider initialState={attendeesInitialState}><Attendees /></FormProvider>} />
             <Route path="/" element={<Home />} />
           </Route>
         </Routes>
