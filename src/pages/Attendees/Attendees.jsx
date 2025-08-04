@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import PageHeader from '../../components/PageHeader/PageHeader';
 import { AttendeesPageContainer } from './Attendees.styles';
@@ -26,7 +27,7 @@ const resultHeader = [
 ];
 
 export default function Attendees() {
-  const eventId = "5b573873a61360071c1f1272";
+  const { eventId } = useParams();
   const queryVariables = {
     eventId,  
     orderBy: "createdAt_DESC",
@@ -113,7 +114,7 @@ export default function Attendees() {
         error={errorForm || error?.message}
         updateField={updateField} 
         onSearch={handleSearchButtonOnClick}
-        optionalFields={[
+        additionalFields={[
           <DateRange 
             from={{ name: "from", value: form.from, label: "Attendees from", placeholder: "Choose a date" }}
             until={{ name: "until", value: form.until, label: "Attendees until", placeholder: "Choose a date" }}
