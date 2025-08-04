@@ -5,7 +5,7 @@ function Sidebar() {
     <SidebarContainer>
       <SidebarList>
         <SidebarListItem>
-          <StyledLink to="/attendees">Attendees</StyledLink>
+          <StyledLink to="/event/5b573873a61360071c1f1272/attendees">Attendees</StyledLink>
         </SidebarListItem>
       </SidebarList>
     </SidebarContainer>
