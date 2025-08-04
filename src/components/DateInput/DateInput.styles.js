@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { borderColor, secondaryColor } from '../../styles/globals';
+import { MEDIA } from '../../styles/layout';
 
 export const DateInputWrapper = styled.div`
   border-radius: 20px;
@@ -7,7 +8,7 @@ export const DateInputWrapper = styled.div`
   padding: 6px 12px 6px 12px;
   display: inline-block;
   width: 220px;
-  
+
   input {
     width: 180px;
   }
@@ -20,6 +21,10 @@ export const DateInputLabel = styled.label`
   line-height: 18px;
   font-weight: 500;
   margin: 16px;
+
+  @media (max-width: ${MEDIA.iphoneSE}px) {
+    margin-bottom: 8px;
+  }
 `;
 
 export const closeIconStyle = {

@@ -21,9 +21,9 @@ import mockResult from '../../mocks/event.attendeesConnection.json';
 */
 
 const resultHeader = [
-  { name: "Attendee name", width: "25%" }, 
-  { name: "Ticket type", width: "55%" }, 
-  { name: "Product price" } 
+  { name: "Attendee name", width: "300px" }, 
+  { name: "Ticket type", width: "50%" }, 
+  { name: "Product price" , width: "150px"} 
 ];
 
 export default function Attendees() {

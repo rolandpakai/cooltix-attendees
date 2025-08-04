@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { secondaryColor, primaryColor, textColor } from '../../styles/globals';
+import { MEDIA } from '../../styles/layout';
 
 export const ellipsisIconStyle = {
   color: secondaryColor,
@@ -33,6 +34,17 @@ export const ResultHeader = styled.div`
 export const ResultRowContainer = styled.div`
   display: flex;
   flex-direction: column;
+`;
+
+export const ResultHeaderContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+
+  @media (max-width: ${MEDIA.iphoneSE}px) {
+    display: none;
+  }
 `;
 
 export const ResultRow = styled.div`

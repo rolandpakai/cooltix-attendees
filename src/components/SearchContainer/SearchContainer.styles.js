@@ -1,16 +1,30 @@
 import styled from 'styled-components';
+import { MEDIA } from '../../styles/layout';
 
 export const StyledSearchContainer = styled.div`
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: flex-start;
+  margin-bottom: 16px;
   background-color: #fff;
   border-radius: 10px;
   padding: 24px;
-  margin-bottom: 16px;
+
+  @media (max-width: ${MEDIA.iphoneSE}px) {
+    grid-template-columns: auto;
+  }
+`;
+
+export const SearchButton = styled.div`
+  display: flex;
+
+  @media (max-width: ${MEDIA.iphoneSE}px) {
+    margin-top: 16px;
+  }
 `;
 
 export const Stack = styled.div`
-  display: flex;     
+  display: flex;
 `;
 
 export const ErrorMessage = styled.div`
@@ -18,7 +32,8 @@ export const ErrorMessage = styled.div`
   background: #fff0f0;
   border-radius: 6px;
   padding: 8px 16px;
-  margin-top: 12px;
+  margin-top: 16px;
+  margin-right: 28px;
   font-size: 15px;
   font-weight: 500;
   min-height: 22px;

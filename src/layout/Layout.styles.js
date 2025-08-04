@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { sidebarWidth } from './styles/layout';
+import { sidebarWidth } from '../styles/layout';
+import { MEDIA } from '../styles/layout';
 
 export const StyledLayout = styled.div`
   height: 100vh;
@@ -19,4 +20,8 @@ export const SidebarContainer = styled.div`
   width: ${sidebarWidth}px;
   background-color: #fff;
   height: 100vh;
+
+  @media (max-width: ${MEDIA.iphoneSE}px) {
+    display: none;
+  }
 `;

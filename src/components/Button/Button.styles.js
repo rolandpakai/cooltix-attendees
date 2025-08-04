@@ -25,7 +25,10 @@ export const StyledButton = styled.button`
   outline: none;
   cursor: pointer;
   transition: background 0.2s, color 0.2s, border 0.2s;
-  min-width: 80px;
+  width: auto;
+  min-width: unset;
+  max-width: max-content;
+  flex: 0 0 auto;
   padding: 10px 32px 10px 32px;
   font-weight: ${({ $size }) => buttonSizeStyles[$size || 'medium'].fontWeight};
   height: ${({ $size }) => buttonSizeStyles[$size || 'medium'].height};

@@ -4,6 +4,7 @@ import {
   ResultContainer,
   ResultHeaderRow, 
   ResultHeader, 
+  ResultHeaderContainer,
   ResultRowContainer,
   LoadMore,
   TotalRow,
@@ -72,14 +73,16 @@ export default function ResultList({
                   onChange={handleAllCheckboxChange}
                 />
               </ResultHeader>
-              {resultHeader.map((header, index) => (
-                <ResultHeader 
-                  key={index}
-                  width={header.width ? header.width : "auto"}
-                >
-                  { header.name }
-                </ResultHeader>
-              ))}
+              <ResultHeaderContainer>
+                {resultHeader.map((header, index) => (
+                  <ResultHeader 
+                    key={index}
+                    width={header.width ? header.width : "auto"}
+                  >
+                    { header.name }
+                  </ResultHeader>
+                ))}
+              </ResultHeaderContainer>
             </ResultHeaderRow>
             <ResultRowContainer>
               {totalCountText && <TotalRow>{totalCountText}</TotalRow>}

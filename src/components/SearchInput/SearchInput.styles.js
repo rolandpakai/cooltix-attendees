@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { borderColor } from '../../styles/globals';
+import { MEDIA } from '../../styles/layout';
 
 export const SearchInputWrapper = styled.div`
   border-radius: 10px;
@@ -11,6 +12,14 @@ export const SearchInputWrapper = styled.div`
 
   input {
     width: 430px;
+  }
+
+  @media (max-width: ${MEDIA.iphoneSE}px) {
+    width: 260px;
+
+    input {
+      width: 190px;
+    }
   }
 `;
 
